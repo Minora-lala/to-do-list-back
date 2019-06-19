@@ -12,9 +12,11 @@ exports.getUsers = function (req, res) {
         .then(users => {
             res.status(200).json(users);
         })
+
         .catch(err => {
             res.status(500).send("Could not connect to the database : " + err);
         });
+    console.log(req)
 };
 
 exports.addUser = function(req, res){

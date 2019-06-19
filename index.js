@@ -1,16 +1,17 @@
 let express = require('express');
 let app = express();
 let mongoose = require('mongoose');
+let cors = require('cors');
 
 let Test = require('./src/models/test');
 let User = require('./src/models/user');
 
 const packagejson = require('./package.json');
 let PORT = 3000;
-var bodyParser = require('body-parser');
-var jsonParser = bodyParser.json({type: 'application/json'});
+let bodyParser = require('body-parser');
+let jsonParser = bodyParser.json({type: 'application/json'});
 app.use(jsonParser);
-
+app.use(cors());
 require('./src/modules/router.module')(app);
 
 let connectToDb = function(){
